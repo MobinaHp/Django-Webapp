@@ -1,0 +1,62 @@
+table {
+    width: 70%;
+    margin: auto;
+  }
+  
+  th, td {
+    width: 10%;
+  }
+  
+  img {
+    width: 150%;
+    max-width: 100%;
+    height: auto;
+    float: right;
+  }
+
+body {
+    padding-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signInForm {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+#signInForm button {
+  width: 100%;
+}
+
+button[type="button"] {
+  background-color: #005eff;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px; /* Adjust font size */
+  font-weight: bold; /* Adjust font weight */
+}
+
+button[type="button"]:hover {
+  background-color: #0044cc; /* Darker shade on hover */
+}

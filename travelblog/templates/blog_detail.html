@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f0367a723e.js" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: rgba(255, 255, 255, 0.63);">
+                <div class="container-fluid">
+                    <i class="fa-solid fa-plane ms-3" style="color: #005eff; font-size: 35px; margin-right: 15px"></i>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <ul class="nav nav-underline">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home<i class="fa-solid fa-house" style="color: #005eff; margin-left: 5px"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'blog' %}">Blogs<i class="fa-solid fa-pen" style="color: #005eff; margin-left: 5px"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'signin' %}">Sign in<i class="fa-solid fa-right-to-bracket" style="color: #005eff;margin-left: 5px"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="text" placeholder="Search">
+                        <button class="btn btn-primary d-flex align-items-center" type="button" style='font-size:14px'>
+                        Search <i class='fas fa-search ms-1' style='font-size:12px'></i>
+                    </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>{{ blog.destination }}</h2>
+                        <p>Rating: {{ blog.rate }}/5</p>
+                        <p>Username: {{ blog.user }}</p>
+                        <img src="{% static 'travelblog/Images/paris.jpg' %}" alt="{{ blog.destination }}" class="img-fluid">
+                        <p>{{ blog.blog_content }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>

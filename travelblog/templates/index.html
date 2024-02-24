@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--bootstrap5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/f0367a723e.js" crossorigin="anonymous"></script>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+  <!--navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: rgba(255, 255, 255, 0.63);">
+    <div class="container-fluid">
+        <i class="fa-solid fa-plane ms-3" style="color: #005eff; font-size: 35px; margin-right: 15px"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="nav nav-underline">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}" >Home<i class="fa-solid fa-house" style="color: #005eff; margin-left: 5px"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog' %}">Blogs<i class="fa-solid fa-pen" style="color: #005eff; margin-left: 5px"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signin' %}">Sign in<i class="fa-solid fa-right-to-bracket" style="color: #005eff;margin-left: 5px"></i></a>
+                </li>
+            </ul>
+        </div>
+        <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search">
+            <button class="btn btn-primary d-flex align-items-center" type="button" style='font-size:14px'>
+                Search <i class='fas fa-search ms-1' style='font-size:12px'></i>
+            </button>
+        </form>
+    </div>
+</nav>
+<div id="demo" class="carousel slide mt-n3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'travelblog/Images/moscow.jpg' %}" class="d-block w-100" style="width: 70%;" alt="Moscow">
+                <div class="carousel-caption">
+                    <h3>Moscow</h3>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="{% static 'travelblog/Images/paris.jpg' %}" class="d-block w-100" style="width: 70%;" alt="Paris">
+                <div class="carousel-caption">
+                    <h3>Paris</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'travelblog/Images/oslo.png' %}" class="d-block w-100" style="width: 70%;" alt="Oslo">
+                <div class="carousel-caption">
+                    <h3>Oslo</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'travelblog/Images/Stockholm.jpg' %}" class="d-block w-100" style="width: 70%;" alt="Stockholm">
+                <div class="carousel-caption">
+                    <h3>Stockholm</h3>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <!--content-->
+    <div class="container-fluid p-5">
+        <h1>Top Blogs</h1>
+        <div class="row">
+            <div class="col-sm-4 mb-4">
+                <div class="card" style="width: 100%; height: 80%;">
+                    <img class="card-img-top" src="{% static 'travelblog/Images/Stockholm.jpg' %}" alt="Card image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title">Stockholm</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="{% url 'blog' %}" class="btn btn-primary">Read Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" style="width: 100%; height: 80%;">
+                    <img class="card-img-top" src="{% static 'travelblog/Images/oslo.png' %}" alt="Card image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title">Oslo</h4>
+                        <p class="card-text">Some example text for another blog. Some example text for another blog. Some example text for another blog.</p>
+                        <a href="{% url 'blog' %}" class="btn btn-primary">Read Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div class="card" style="width: 100%; height: 80%;">
+                    <img class="card-img-top" src="{% static 'travelblog/Images/rome.jpg' %}" alt="Card image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title">Rome</h4>
+                        <p class="card-text">Some example text for another blog. Some example text for another blog. Some example text for another blog.</p>
+                        <a href="{% url 'blog' %}" class="btn btn-primary">Read Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
+</body>
+</html>

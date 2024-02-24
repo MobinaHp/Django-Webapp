@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--bootstrap5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/f0367a723e.js" crossorigin="anonymous"></script>
+    <!--style.css-->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <form method="post" action="{% url 'writing_blog' %}">
+        {% csrf_token %}
+        <div class="container">
+            <h2 class="mt-3">Travel Blog</h2>
+            <div class="form-group mt-3">
+                <label for="title">Title:</label>
+                {{ form.title }}
+            </div>
+    
+        <!--Rating-->
+        <div class="form-group">
+            <h3>Ratings:</h3>
+
+            <label for="food">Food:</label>
+            <div class="star-rating">
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="1"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="2"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="3"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="4"></i>        
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="5"></i>
+            </div>
+    
+            <label for="restaurant">Restaurant Name:</label>
+            {{ form.restaurant_name }}
+        
+            <label for="hotel">Hotel:</label>
+            <div class="star-rating">
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="1"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="2"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="3"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="4"></i>        
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="5"></i>
+            </div>
+    
+            <label for="hotelName">Hotel Name:</label>
+            {{ form.hotel_name }}
+
+            <label for="transportation">Transportation:</label>
+            <div class="star-rating">
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="1"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="2"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="3"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="4"></i>        
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="5"></i>
+            </div>
+            <label for="sightseeing">Sightseeing:</label>
+            <div class="star-rating">
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="1"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="2"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="3"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="4"></i>        
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="5"></i>
+            </div>
+            <label for="locals">Locals:</label>
+            <div class="star-rating">
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="1"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="2"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="3"></i>
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="4"></i>        
+                <i class="fa-regular fa-star" style="color: #005eff;" data-rating="5"></i>
+            </div>
+        </div>
+    
+        <!-- Blog Section -->
+        <div class="form-group">
+            <h3>Write Your Blog:</h3>
+            {{ form.blog }}
+            <textarea id="blog" name="blog" class="form-control" rows="5" placeholder="Write your travel blog here..."></textarea>
+        </div>
+
+    </div>
+    </form>
+    <table id="blogTable" class="table table-sm text-center">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Destination</th>
+            <th>Rate</th>
+            <th>Blog Preview</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Existing entries will be rendered by your template engine -->
+          {% for review in reviews %}
+            <tr>
+              <td>{{ review.user }}</td>
+              <td>{{ review.destination }}</td>
+              <td>{{ review.rate }}</td>
+              <td>{{ review.blogPreview }}</td>
+              <td><img src="{{ review.imageSrc }}" alt="{{ review.user }}'s Image" style="width: 30%; float: right;"></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    
+      <!-- Add a form for user input -->
+      <form id="addReviewForm">
+        <label for="userInput">User:</label>
+        <input type="text" id="userInput" name="userInput">
+    
+        <label for="destinationInput">Destination:</label>
+        <input type="text" id="destinationInput" name="destinationInput">
+    
+        <label for="rateInput">Rate:</label>
+        <input type="text" id="rateInput" name="rateInput">
+    
+        <label for="blogPreviewInput">Blog Preview:</label>
+        <input type="text" id="blogPreviewInput" name="blogPreviewInput">
+    
+        <label for="imageSrcInput">Image Source:</label>
+        <input type="text" id="imageSrcInput" name="imageSrcInput">
+    
+        <button type="button" class="btn btn-primary" onclick="addReview()">Post Review And Blog</button>
+      </form>
+    
+      <script>
+        function addReview() {
+          // Get input values
+          var userValue = document.getElementById("userInput").value;
+          var destinationValue = document.getElementById("destinationInput").value;
+          var rateValue = document.getElementById("rateInput").value;
+          var blogPreviewValue = document.getElementById("blogPreviewInput").value;
+          var imageSrcValue = document.getElementById("imageSrcInput").value;
+    
+          // Access the table body
+          var tableBody = document.getElementById("blogTable").getElementsByTagName('tbody')[0];
+    
+          // Insert a new row in the table
+          var newRow = tableBody.insertRow(tableBody.rows.length);
+    
+          // Insert cells into the new row
+          var cell1 = newRow.insertCell(0);
+          var cell2 = newRow.insertCell(1);
+          var cell3 = newRow.insertCell(2);
+          var cell4 = newRow.insertCell(3);
+          var cell5 = newRow.insertCell(4);
+    
+          // Fill cells with input values
+          cell1.innerHTML = userValue;
+          cell2.innerHTML = destinationValue;
+          cell3.innerHTML = rateValue;
+          cell4.innerHTML = blogPreviewValue;
+          cell5.innerHTML = '<img src="' + imageSrcValue + '" alt="' + userValue + '\'s Image" style="width: 30%; float: right;">';
+    
+          // Clear the form after submission
+          document.getElementById("addReviewForm").reset();
+        }
+      </script>
+    
+</body>
+</html>
